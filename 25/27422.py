@@ -24,4 +24,4 @@ for number in range(174457, 174506):
                 dividers.append(mirror_divider)
     # Print dividers according to task condition
     if len(dividers) == 2:
-        print(dividers)
+        print(*dividers)
