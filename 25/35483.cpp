@@ -26,7 +26,7 @@ int main()
                 break;
             }
         }
-        if (count == 5){
+        if (count == 5) {
             cout << i << endl;
         }
     }
