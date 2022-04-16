@@ -1,13 +1,22 @@
 
+MAX_TURNS = 5
+
+
 def steps(n: tuple):
     x, y = n
     return (x + 1, y), (x * 2, y), (x, y + 1), (x, y * 2)
 
-
-def f(n: tuple):
+"""
+! ВНИМАНИЕ !
+Не работает для первой задачи, так как там петя НЕ следует выигрышной стратегии.
+"""
+def f(n: tuple, turn: int = 0):
     if sum(n) >= 77:
         return "W"
-    results = [f(x) for x in steps(n)]
+    if turn >= MAX_TURNS:
+        return "MAX_TURNS"
+    turn += 1
+    results = [f(x, turn) for x in steps(n)]
     if any(x == 'W' for x in results):
         return "P1" # Игрок с текущей комбинацией обязательно выиграет первым ходом
     if all(x == "P1" for x in results):
@@ -23,12 +32,11 @@ def f(n: tuple):
         он будет использоваться (следование выигрышной стратегии)
         """
         return "P2" # Игрок с текущей комбинацией обязательно выиграет вторым ходом
-    if all(x == "W" or x == 'P2' for x in results):
+    if all(x == "P1" or x == 'P2' for x in results):
         return "B1/2" # Игрок с текущей комбинацией обязательно проиграет, при этом второй игрок выиграет 1 или 2 ходом
 
 
-for s in range(10, 70):
-    n = (10, s)
-    if f(n) == 'B1':
+for s in range(15, 70):
+    n = (7, s)
+    if f(n) == 'P2':
         print(s)
-        break
