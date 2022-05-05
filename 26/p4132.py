@@ -17,21 +17,6 @@ def change_disk():
     if disk_to_write >= len(disks):
         disk_to_write = 0
 
-# for archive in archives:
-#     start_disk = disk_to_write
-#     if disks[disk_to_write] >= archive:
-#         disks[disk_to_write] -= archive
-#         change_disk()
-#     else:
-#         change_disk()
-#         while disks[disk_to_write] < archive and disk_to_write != start_disk:
-#             change_disk()
-#         if disks[disk_to_write] >= archive:
-#             disks[disk_to_write] -= archive
-#             change_disk()
-#         else:
-#             not_packed.append(archive)
-
 
 for archive in archives:
     start_disk = disk_to_write
